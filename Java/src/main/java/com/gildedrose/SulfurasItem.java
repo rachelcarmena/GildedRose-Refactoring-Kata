@@ -1,7 +1,10 @@
 package com.gildedrose;
 
+import java.util.Optional;
+import java.util.function.Function;
+
 public class SulfurasItem extends GeneralItem {
-    public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
+    private static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
 
     public SulfurasItem(Item item) {
         super(SULFURAS_HAND_OF_RAGNAROS, item.sellIn, item.quality);
@@ -15,5 +18,13 @@ public class SulfurasItem extends GeneralItem {
     @Override
     public void updateItemSellIn() {
         return;
+    }
+
+    public static Function<Item, Optional<GeneralItem>> from() {
+        return item -> {
+            if (item.name.equals(SULFURAS_HAND_OF_RAGNAROS))
+                return Optional.of(new SulfurasItem(item));
+            return Optional.empty();
+        };
     }
 }
