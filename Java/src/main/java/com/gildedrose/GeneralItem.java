@@ -9,7 +9,13 @@ public class GeneralItem extends Item {
         super(item.name, item.sellIn, item.quality);
     }
 
+    public GeneralItem(String name, int sellIn, int quality) {
+        super(name, sellIn, quality);
+    }
+
     public static GeneralItem from(Item item) {
+        if (item.name.equals(SULFURAS_HAND_OF_RAGNAROS))
+            return new SulfurasItem(item);
         return new GeneralItem(item);
     }
 
@@ -33,8 +39,6 @@ public class GeneralItem extends Item {
                     quality = 0;
                 }
                 break;
-            case SULFURAS_HAND_OF_RAGNAROS:
-                break;
             default:
                 decreaseQuality();
                 if (sellIn < 0) {
@@ -44,9 +48,7 @@ public class GeneralItem extends Item {
     }
 
     public void updateItemSellIn() {
-        if (!name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-            sellIn -= 1;
-        }
+        sellIn -= 1;
     }
 
     public void decreaseQuality() {
