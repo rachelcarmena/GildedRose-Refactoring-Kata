@@ -14,15 +14,16 @@ public class BackstageItem extends GeneralItem {
 
     @Override
     public void updateItemQuality() {
+        if (sellIn < 0) {
+            quality = 0;
+            return;
+        }
         increaseQuality();
         if (sellIn < 10) {
             increaseQuality();
         }
         if (sellIn < 5) {
             increaseQuality();
-        }
-        if (sellIn < 0) {
-            quality = 0;
         }
     }
 
