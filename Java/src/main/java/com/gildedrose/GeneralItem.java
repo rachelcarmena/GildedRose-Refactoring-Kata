@@ -18,28 +18,15 @@ public class GeneralItem extends Item {
             return new SulfurasItem(item);
         if (item.name.equals(AGED_BRIE))
             return new AgedBrieItem(item);
+        if (item.name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL80_ETC_CONCERT))
+            return new BackstageItem(item);
         return new GeneralItem(item);
     }
 
     public void updateItemQuality() {
-        switch (name) {
-            case BACKSTAGE_PASSES_TO_A_TAFKAL80_ETC_CONCERT:
-                increaseQuality();
-                if (sellIn < 10) {
-                    increaseQuality();
-                }
-                if (sellIn < 5) {
-                    increaseQuality();
-                }
-                if (sellIn < 0) {
-                    quality = 0;
-                }
-                break;
-            default:
-                decreaseQuality();
-                if (sellIn < 0) {
-                    decreaseQuality();
-                }
+        decreaseQuality();
+        if (sellIn < 0) {
+            decreaseQuality();
         }
     }
 
