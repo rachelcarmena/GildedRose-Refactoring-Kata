@@ -10,7 +10,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            GeneralItem item = GeneralItem.from(items[i]);
+            GeneralItem item = ItemFactory.from(items[i]);
             item.updateItemSellIn();
             item.updateItemQuality();
             items[i] = item;
