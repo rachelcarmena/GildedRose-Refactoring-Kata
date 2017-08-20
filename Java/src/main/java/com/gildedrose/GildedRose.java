@@ -1,6 +1,11 @@
 package com.gildedrose;
 
 class GildedRose {
+
+    public static final String AGED_BRIE = "Aged Brie";
+    public static final String BACKSTAGE_PASSES_TO_A_TAFKAL80_ETC_CONCERT = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
+
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -18,13 +23,13 @@ class GildedRose {
 
     private void updateItemQuality(Item item) {
         switch (item.name) {
-            case "Aged Brie":
+            case AGED_BRIE:
                 increaseQuality(item);
                 if (item.sellIn < 0) {
                     increaseQuality(item);
                 }
                 break;
-            case "Backstage passes to a TAFKAL80ETC concert":
+            case BACKSTAGE_PASSES_TO_A_TAFKAL80_ETC_CONCERT:
                 increaseQuality(item);
                 if (item.sellIn < 10) {
                     increaseQuality(item);
@@ -36,7 +41,7 @@ class GildedRose {
                     item.quality = 0;
                 }
                 break;
-            case "Sulfuras, Hand of Ragnaros":
+            case SULFURAS_HAND_OF_RAGNAROS:
                 break;
             default:
                 decreaseQuality(item);
@@ -47,7 +52,7 @@ class GildedRose {
     }
 
     private void updateItemSellIn(Item item) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+        if (!item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
             item.sellIn -= 1;
         }
     }
