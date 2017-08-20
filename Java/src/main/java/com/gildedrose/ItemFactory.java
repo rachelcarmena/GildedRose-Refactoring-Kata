@@ -1,21 +1,26 @@
 package com.gildedrose;
 
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.function.Function;
 
 public class ItemFactory {
+
+    private static ArrayList<Function> converters = new ArrayList<>();
+
+    static {
+        converters = new ArrayList<>();
+        converters.add(SulfurasItem.from());
+        converters.add(AgedBrieItem.from());
+        converters.add(BackstageItem.from());
+    }
+
     public static GeneralItem from(Item item) {
-        Optional<GeneralItem> result = SulfurasItem.from().apply(item);
-        if (result.isPresent())
-            return result.get();
-
-        result = AgedBrieItem.from().apply(item);
-        if (result.isPresent())
-            return result.get();
-
-        result = BackstageItem.from().apply(item);
-        if (result.isPresent())
-            return result.get();
-
+        for (Function<Item, Optional<GeneralItem>> converter: converters) {
+            Optional<GeneralItem> result = converter.apply(item);
+            if (result.isPresent())
+                return result.get();
+        }
         return new GeneralItem(item);
     }
 }
