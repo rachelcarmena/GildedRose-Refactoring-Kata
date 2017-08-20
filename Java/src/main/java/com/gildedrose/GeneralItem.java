@@ -16,17 +16,13 @@ public class GeneralItem extends Item {
     public static GeneralItem from(Item item) {
         if (item.name.equals(SULFURAS_HAND_OF_RAGNAROS))
             return new SulfurasItem(item);
+        if (item.name.equals(AGED_BRIE))
+            return new AgedBrieItem(item);
         return new GeneralItem(item);
     }
 
     public void updateItemQuality() {
         switch (name) {
-            case AGED_BRIE:
-                increaseQuality();
-                if (sellIn < 0) {
-                    increaseQuality();
-                }
-                break;
             case BACKSTAGE_PASSES_TO_A_TAFKAL80_ETC_CONCERT:
                 increaseQuality();
                 if (sellIn < 10) {
