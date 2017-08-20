@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import com.gildedrose.domain.GeneralItem;
+
 class GildedRose {
 
     Item[] items;
@@ -10,10 +12,8 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            GeneralItem item = ItemFactory.from(items[i]);
-            item.updateItemSellIn();
-            item.updateItemQuality();
-            items[i] = item;
+            items[i] = GeneralItem.updateQuality(items[i]);
         }
     }
+
 }

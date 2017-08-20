@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.domain;
+
+import com.gildedrose.Item;
 
 public class GeneralItem extends Item {
 
@@ -31,5 +33,12 @@ public class GeneralItem extends Item {
         if (quality < 50) {
             quality += 1;
         }
+    }
+
+    public static GeneralItem updateQuality(Item item) {
+        GeneralItem generalItem = ItemFactory.from(item);
+        generalItem.updateItemSellIn();
+        generalItem.updateItemQuality();
+        return generalItem;
     }
 }

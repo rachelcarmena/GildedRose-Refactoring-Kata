@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.domain;
+
+import com.gildedrose.Item;
 
 import java.util.ArrayList;
 import java.util.Optional;
