@@ -14,14 +14,14 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            Item item = items[i];
+            GeneralItem item = GeneralItem.from(items[i]);
             updateItemSellIn(item);
             updateItemQuality(item);
             items[i] = item;
         }
     }
 
-    private void updateItemQuality(Item item) {
+    public void updateItemQuality(GeneralItem item) {
         switch (item.name) {
             case AGED_BRIE:
                 increaseQuality(item);
@@ -51,19 +51,19 @@ class GildedRose {
         }
     }
 
-    private void updateItemSellIn(Item item) {
+    public void updateItemSellIn(GeneralItem item) {
         if (!item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
             item.sellIn -= 1;
         }
     }
 
-    private void decreaseQuality(Item item) {
+    public void decreaseQuality(GeneralItem item) {
         if (item.quality > 0) {
             item.quality -= 1;
         }
     }
 
-    private void increaseQuality(Item item) {
+    public void increaseQuality(GeneralItem item) {
         if (item.quality < 50) {
             item.quality += 1;
         }
