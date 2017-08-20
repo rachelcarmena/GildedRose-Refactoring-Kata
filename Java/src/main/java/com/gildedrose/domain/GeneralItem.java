@@ -23,13 +23,13 @@ public class GeneralItem extends Item {
         sellIn -= 1;
     }
 
-    private void decreaseQuality() {
+    void decreaseQuality() {
         if (quality > 0) {
             quality -= 1;
         }
     }
 
-    protected void increaseQuality() {
+    void increaseQuality() {
         if (quality < 50) {
             quality += 1;
         }

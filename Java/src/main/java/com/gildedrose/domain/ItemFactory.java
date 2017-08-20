@@ -15,6 +15,7 @@ public class ItemFactory {
         converters.add(SulfurasItem.from());
         converters.add(AgedBrieItem.from());
         converters.add(BackstageItem.from());
+        converters.add(ConjuredItem.from());
     }
 
     public static GeneralItem from(Item item) {
