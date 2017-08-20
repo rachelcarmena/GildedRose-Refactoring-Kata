@@ -8,18 +8,18 @@ public class GeneralItem extends Item {
         super(item.name, item.sellIn, item.quality);
     }
 
-    public GeneralItem(String name, int sellIn, int quality) {
+    GeneralItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 
-    public void updateItemQuality() {
+    protected void updateItemQuality() {
         decreaseQuality();
         if (sellIn < 0) {
             decreaseQuality();
         }
     }
 
-    public void updateItemSellIn() {
+    protected void updateItemSellIn() {
         sellIn -= 1;
     }
 
